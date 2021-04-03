@@ -1,17 +1,20 @@
-import React from 'react';
+import React from "react";
 import ReactDOM from 'react-dom';
+import App from './components/App';
 import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import Joke from './components/Joke';
+import {Router,Switch,Route} from 'react-router-dom';
+import createBrowserHistory from 'history/createBrowserHistory';
+import MusicMaster from './project/music-master';
+
+const History = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+<Router history={History}>
+    <Switch>
+        <Route exact={true} path='/' component={App}></Route>
+        <Route path='/jokes' component={Joke}></Route>
+        <Route path='/music-master' component={MusicMaster}></Route>
+    </Switch>
+</Router>
+,document.getElementById('root'));
